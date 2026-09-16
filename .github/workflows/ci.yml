@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  scaffold:
+    name: Verify Gradle scaffold
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      # The first commit intentionally validates only project wiring. Full test
+      # and lint tasks are added after the implementation commits are complete.
+      - name: List configured projects
+        run: ./gradlew projects
