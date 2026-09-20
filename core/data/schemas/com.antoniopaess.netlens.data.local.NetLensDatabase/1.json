@@ -1,0 +1,165 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "8b4553538ae680e51dc5354dcbb0c0ca",
+    "entities": [
+      {
+        "tableName": "regions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` TEXT NOT NULL, `name` TEXT NOT NULL, `diagnosticLatencyMillis` INTEGER NOT NULL, PRIMARY KEY(`code`))",
+        "fields": [
+          {
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "diagnosticLatencyMillis",
+            "columnName": "diagnosticLatencyMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "code"
+          ]
+        }
+      },
+      {
+        "tableName": "connection_events",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`eventId` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `oldStateType` TEXT NOT NULL, `oldRegionName` TEXT, `oldRegionCode` TEXT, `oldRegionLatencyMillis` INTEGER, `oldConnectedAtMillis` INTEGER, `oldAttempt` INTEGER, `oldErrorType` TEXT, `oldDropReasonType` TEXT, `newStateType` TEXT NOT NULL, `newRegionName` TEXT, `newRegionCode` TEXT, `newRegionLatencyMillis` INTEGER, `newConnectedAtMillis` INTEGER, `newAttempt` INTEGER, `newErrorType` TEXT, `newDropReasonType` TEXT, `reasonType` TEXT, `reasonErrorType` TEXT, `storageId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "eventId",
+            "columnName": "eventId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "oldStateType",
+            "columnName": "oldStateType",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "oldRegionName",
+            "columnName": "oldRegionName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "oldRegionCode",
+            "columnName": "oldRegionCode",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "oldRegionLatencyMillis",
+            "columnName": "oldRegionLatencyMillis",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "oldConnectedAtMillis",
+            "columnName": "oldConnectedAtMillis",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "oldAttempt",
+            "columnName": "oldAttempt",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "oldErrorType",
+            "columnName": "oldErrorType",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "oldDropReasonType",
+            "columnName": "oldDropReasonType",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "newStateType",
+            "columnName": "newStateType",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "newRegionName",
+            "columnName": "newRegionName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "newRegionCode",
+            "columnName": "newRegionCode",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "newRegionLatencyMillis",
+            "columnName": "newRegionLatencyMillis",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "newConnectedAtMillis",
+            "columnName": "newConnectedAtMillis",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "newAttempt",
+            "columnName": "newAttempt",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "newErrorType",
+            "columnName": "newErrorType",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "newDropReasonType",
+            "columnName": "newDropReasonType",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "reasonType",
+            "columnName": "reasonType",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "reasonErrorType",
+            "columnName": "reasonErrorType",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "storageId",
+            "columnName": "storageId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "storageId"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8b4553538ae680e51dc5354dcbb0c0ca')"
+    ]
+  }
+}
